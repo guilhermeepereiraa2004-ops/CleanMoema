@@ -6,20 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- ===================== SEO PRIMÁRIO ===================== -->
-    <title>Marmitas Saudáveis em São Paulo | CleanFoods Lençóis</title>
+    <title>Marmitas Saudáveis e Personalizadas em Moema | CleanFoods</title>
     <meta name="description"
-        content="Marmitas saudáveis em São Paulo. Refeições de frango, patinho e opções gourmet com muito sabor e praticidade. Peça online.">
+        content="Marmitas saudáveis em Moema, com opções prontas e personalizadas de acordo com a sua dieta. Escolha seu cardápio e peça online.">
     <meta name="keywords"
-        content="marmita saudável São Paulo, marmitaria fitness SP, comida saudável São Paulo, marmita gourmet SP, CleanFoods Lençóis">
-    <meta name="author" content="CleanFoods Lençóis">
+        content="marmita saudável Moema, marmita personalizada por dieta, marmitaria fitness SP, comida saudável Moema, CleanFoods Moema">
+    <meta name="author" content="CleanFoods Moema">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://www.cleanfoodsp.com.br/">
 
     <!-- ===================== OPEN GRAPH (WhatsApp / Instagram) ===================== -->
     <meta property="og:type" content="website">
-    <meta property="og:site_name" content="CleanFoods Lençóis">
+    <meta property="og:site_name" content="CleanFoods Moema">
     <meta property="og:url" content="https://www.cleanfoodsp.com.br/">
-    <meta property="og:title" content="Marmitas Saudáveis em São Paulo | CleanFoods Lençóis">
+    <meta property="og:title" content="Marmitas Saudáveis e Personalizadas | CleanFoods Moema">
     <meta property="og:description"
         content="Marmitas saudáveis em São Paulo, com opções de frango, patinho e gourmet. Peça online de domingo a domingo.">
     <meta property="og:image" content="https://www.cleanfoodsp.com.br/hero-image.png">
@@ -30,15 +30,15 @@
 
     <!-- ===================== TWITTER CARD ===================== -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Marmitas Saudáveis em São Paulo | CleanFoods Lençóis">
+    <meta name="twitter:title" content="Marmitas Saudáveis e Personalizadas | CleanFoods Moema">
     <meta name="twitter:description"
         content="Marmitas saudáveis, práticas e saborosas em São Paulo. Peça online.">
     <meta name="twitter:image" content="https://www.cleanfoodsp.com.br/hero-image.png">
     <meta name="twitter:image:alt" content="Marmita fitness CleanFoods com frango grelhado, batata doce e brócolis">
 
     <!-- ===================== FAVICON ===================== -->
-    <link rel="icon" type="image/png" href="logo-lencois.png">
-    <link rel="apple-touch-icon" href="logo-lencois.png">
+    <link rel="icon" type="image/png" href="logo-moema.png">
+    <link rel="apple-touch-icon" href="logo-moema.png">
 
     <!-- ===================== SCHEMA.ORG JSON-LD ===================== -->
     <script type="application/ld+json">
@@ -48,11 +48,11 @@
         {
           "@type": ["Restaurant", "LocalBusiness"],
           "@id": "https://www.cleanfoodsp.com.br/#organization",
-          "name": "CleanFoods Lençóis",
+          "name": "CleanFoods Moema",
           "alternateName": "CleanFoods Marmitaria Fitness",
           "description": "Marmitaria saudável em São Paulo. Marmitas de frango, patinho e opções gourmet com entrega na região.",
           "url": "https://www.cleanfoodsp.com.br/",
-          "logo": "https://www.cleanfoodsp.com.br/logo-lencois.png",
+          "logo": "https://www.cleanfoodsp.com.br/logo-moema.png",
           "image": "https://www.cleanfoodsp.com.br/hero-image.png",
           "telephone": "+5511910993953",
           "priceRange": "R$19–R$35",
@@ -169,7 +169,7 @@
               "name": "A CleanFoods faz entrega em São Paulo?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Sim! A CleanFoods Lençóis entrega marmitas em São Paulo. Entre em contato pelo WhatsApp para confirmar sua área de entrega."
+                "text": "Sim! A CleanFoods Moema entrega marmitas em São Paulo. Entre em contato pelo WhatsApp para confirmar sua área de entrega."
               }
             },
             {
@@ -222,6 +222,28 @@
     <!-- Mercado Pago SDK -->
     <script src="https://sdk.mercadopago.com/js/v2"></script>
     <script>
+        function sendDietRequest(event) {
+            event.preventDefault();
+            const goal = document.querySelector('input[name="diet-goal"]:checked')?.value || 'Não informado';
+            const quantity = document.querySelector('input[name="diet-quantity"]:checked')?.value || 'Não informado';
+            const details = document.getElementById('diet-details')?.value.trim() || 'Sem observações adicionais';
+            const savedWhatsapp = localStorage.getItem('cleanfoods_whatsapp') || '11996268057';
+            const message = [
+                'Olá! Quero uma proposta de marmitas personalizadas da CleanFoods Moema.',
+                '',
+                `Objetivo: ${goal}`,
+                `Quantidade: ${quantity}`,
+                `Orientações: ${details}`
+            ].join('\n');
+            window.open(`https://wa.me/55${savedWhatsapp.replace(/\D/g, '')}?text=${encodeURIComponent(message)}`, '_blank', 'noopener,noreferrer');
+        }
+        document.addEventListener('DOMContentLoaded', function () {
+            const menuSection = document.getElementById('menu');
+            const customMealsSection = document.getElementById('personalizadas');
+            if (menuSection && customMealsSection) {
+                menuSection.insertAdjacentElement('afterend', customMealsSection);
+            }
+        });
         tailwind.config = {
             theme: {
                 extend: {
@@ -834,6 +856,273 @@
             .hero-reference__accent strong { font-size:1.75rem; }
             .hero-reference__label { right:0; bottom:6%; font-size:.56rem; }
         }
+        /* CleanFoods Moema — fresh urban visual system */
+        :root {
+            --moema-ink: #102a20;
+            --moema-green: #184c35;
+            --moema-leaf: #b7d83d;
+            --moema-sun: #ffc914;
+            --moema-cream: #f5f2e9;
+        }
+
+        .moema-header {
+            position: absolute; inset: 0 0 auto; z-index: 45; padding: 1.25rem 0;
+        }
+        .moema-header__inner {
+            width: min(92%, 1280px); margin: 0 auto; display: flex; align-items: center; gap: 2rem;
+        }
+        .moema-header__logo img { width: 178px; height: auto; }
+        .moema-header__nav { display: flex; align-items: center; gap: 2rem; margin-left: auto; }
+        .moema-header__nav a { color: rgba(255,255,255,.82); font-size: .82rem; font-weight: 700; }
+        .moema-header__nav a:hover { color: var(--moema-sun); }
+        .moema-header__cta {
+            display: inline-flex; align-items: center; justify-content: center; min-height: 46px; padding: 0 1.2rem;
+            border-radius: 999px; background: var(--moema-sun); color: #101a14; font-size: .82rem; font-weight: 800;
+        }
+
+        .moema-hero {
+            min-height: 780px; position: relative; overflow: hidden; color: #fff;
+            background: radial-gradient(circle at 76% 40%, rgba(183,216,61,.18), transparent 26%), linear-gradient(122deg, #0b251a 0%, #184c35 58%, #123825 100%);
+        }
+        .moema-hero::after {
+            content: ""; position: absolute; inset: auto -10% -35% 38%; height: 68%; border-radius: 50%;
+            border: 1px solid rgba(255,255,255,.12); box-shadow: 0 0 0 70px rgba(255,255,255,.025), 0 0 0 140px rgba(255,255,255,.018);
+        }
+        .moema-hero__grid {
+            width: min(92%, 1280px); min-height: 780px; margin: 0 auto; padding: 9.5rem 0 5rem;
+            display: grid; grid-template-columns: .92fr 1.08fr; align-items: center; gap: clamp(2rem, 5vw, 6rem); position: relative; z-index: 2;
+        }
+        .moema-kicker { display: flex; align-items: center; gap: .75rem; color: var(--moema-sun); font-size: .76rem; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; }
+        .moema-kicker::before { content: ""; width: 2.3rem; height: 2px; background: currentColor; }
+        .moema-hero h1 { margin: 1.25rem 0 1.35rem; max-width: 670px; font-family: 'Clash Display', sans-serif; font-size: clamp(4.2rem, 7vw, 7.4rem); line-height: .86; letter-spacing: -.055em; font-weight: 600; }
+        .moema-hero h1 em { display: block; color: var(--moema-sun); font-family: 'Instrument Serif', serif; font-weight: 400; }
+        .moema-hero__copy > p { max-width: 580px; color: rgba(255,255,255,.74); font-size: 1.12rem; line-height: 1.75; }
+        .moema-hero__actions { display: flex; flex-wrap: wrap; align-items: center; gap: .9rem; margin-top: 2.1rem; }
+        .moema-btn { min-height: 54px; padding: 0 1.5rem; border-radius: 999px; display: inline-flex; align-items: center; justify-content: center; gap: .65rem; font-weight: 800; }
+        .moema-btn--primary { background: var(--moema-sun); color: #101a14; }
+        .moema-btn--ghost { border: 1px solid rgba(255,255,255,.28); color: #fff; }
+        .moema-btn:hover { transform: translateY(-2px); }
+        .moema-hero__visual { position: relative; min-height: 530px; }
+        .moema-hero__photo { position: absolute; inset: 0 0 0 4%; border-radius: 2.2rem 2.2rem 8rem 2.2rem; overflow: hidden; box-shadow: 0 32px 80px rgba(0,0,0,.35); transform: rotate(2deg); }
+        .moema-hero__photo img { width: 100%; height: 100%; object-fit: cover; }
+        .moema-hero__badge { position: absolute; left: -2rem; bottom: 2.2rem; width: 148px; aspect-ratio: 1; border-radius: 50%; display: grid; place-items: center; text-align: center; background: var(--moema-sun); color: #102a20; border: 8px solid #184c35; font-size: .78rem; line-height: 1.2; font-weight: 800; text-transform: uppercase; transform: rotate(-8deg); }
+        .moema-hero__badge strong { display: block; font-family: 'Instrument Serif', serif; font-size: 2.3rem; font-weight: 400; text-transform: none; }
+        .moema-proof { background: var(--moema-cream); color: var(--moema-ink); }
+        .moema-proof__inner { width: min(92%, 1280px); margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); }
+        .moema-proof__item { padding: 1.55rem; border-right: 1px solid rgba(16,42,32,.12); }
+        .moema-proof__item:last-child { border: 0; }
+        .moema-proof__item strong { display: block; font-size: 1.02rem; }
+        .moema-proof__item span { color: #66776d; font-size: .84rem; }
+
+        .custom-meals { background: var(--moema-cream); color: var(--moema-ink); padding: 7.5rem 0; position: relative; overflow: hidden; }
+        .custom-meals__shell { width: min(92%, 1280px); margin: 0 auto; display: grid; grid-template-columns: .82fr 1.18fr; gap: clamp(3rem, 7vw, 7rem); align-items: start; }
+        .custom-meals__intro { position: sticky; top: 2rem; }
+        .custom-meals__eyebrow { color: var(--moema-green); font-size: .76rem; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; }
+        .custom-meals h2 { margin: 1rem 0 1.3rem; font-family: 'Clash Display', sans-serif; font-size: clamp(3rem, 5.5vw, 5.5rem); line-height: .93; letter-spacing: -.055em; }
+        .custom-meals h2 em { color: var(--moema-green); font-family: 'Instrument Serif', serif; font-weight: 400; }
+        .custom-meals__intro p { color: #5d6c63; font-size: 1.04rem; line-height: 1.75; }
+        .custom-meals__steps { margin-top: 2rem; display: grid; gap: .8rem; }
+        .custom-meals__step { display: flex; gap: .9rem; align-items: center; font-weight: 700; }
+        .custom-meals__step span { width: 2rem; height: 2rem; border-radius: 50%; display: grid; place-items: center; background: var(--moema-green); color: #fff; font-size: .75rem; }
+        .diet-builder { padding: clamp(1.4rem, 3vw, 2.4rem); border-radius: 2rem; background: #fff; box-shadow: 0 28px 80px rgba(16,42,32,.12); }
+        .diet-builder__head { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; margin-bottom: 2rem; }
+        .diet-builder__head h3 { font-family: 'Clash Display', sans-serif; font-size: 1.75rem; font-weight: 600; }
+        .diet-builder__head span { padding: .45rem .8rem; border-radius: 999px; background: #eaf2d3; color: var(--moema-green); font-size: .72rem; font-weight: 800; }
+        .diet-field { margin-bottom: 1.65rem; }
+        .diet-label { display: block; margin-bottom: .7rem; font-size: .82rem; font-weight: 800; }
+        .diet-options { display: flex; flex-wrap: wrap; gap: .55rem; }
+        .diet-options input { position: absolute; opacity: 0; pointer-events: none; }
+        .diet-options label { padding: .72rem 1rem; border: 1px solid #dce4df; border-radius: .8rem; color: #516158; font-size: .86rem; font-weight: 700; cursor: pointer; transition: .2s ease; }
+        .diet-options input:checked + label { background: var(--moema-green); border-color: var(--moema-green); color: #fff; box-shadow: 0 7px 20px rgba(24,76,53,.2); }
+        .diet-textarea { width: 100%; min-height: 96px; resize: vertical; padding: .9rem 1rem; border: 1px solid #dce4df; border-radius: .8rem; outline: none; color: var(--moema-ink); }
+        .diet-textarea:focus { border-color: var(--moema-green); box-shadow: 0 0 0 3px rgba(24,76,53,.1); }
+        .diet-submit { width: 100%; min-height: 56px; border: 0; border-radius: 999px; background: var(--moema-sun); color: #102a20; font-weight: 900; cursor: pointer; }
+        .diet-note { margin-top: .85rem; color: #76827b; text-align: center; font-size: .75rem; }
+
+        @media (max-width: 900px) {
+            .moema-header__nav { display: none; }
+            .moema-header__cta { margin-left: auto; }
+            .moema-hero__grid { grid-template-columns: 1fr; padding-top: 8.5rem; }
+            .moema-hero__visual { min-height: 440px; }
+            .moema-proof__inner { grid-template-columns: 1fr 1fr; }
+            .moema-proof__item:nth-child(2) { border-right: 0; }
+            .custom-meals__shell { grid-template-columns: 1fr; }
+            .custom-meals__intro { position: static; }
+        }
+        @media (max-width: 560px) {
+            .moema-header__logo img { width: 140px; }
+            .moema-header__cta { min-height: 42px; padding: 0 .9rem; font-size: .72rem; }
+            .moema-hero { min-height: auto; }
+            .moema-hero__grid { min-height: 0; padding-bottom: 3rem; }
+            .moema-hero h1 { font-size: clamp(3.7rem, 17vw, 5.2rem); }
+            .moema-hero__visual { min-height: 350px; }
+            .moema-hero__photo { left: 0; border-radius: 1.5rem 1.5rem 5rem 1.5rem; }
+            .moema-hero__badge { width: 112px; left: -.6rem; bottom: -1rem; border-width: 5px; }
+            .moema-proof__item { padding: 1.1rem .8rem; }
+            .diet-builder__head { display: block; }
+            .diet-builder__head span { display: inline-block; margin-top: .6rem; }
+        }
+
+        /* Rebrand Moema — black kitchen / yellow energy */
+        :root {
+            --moema-ink: #080808;
+            --moema-green: #ffc400;
+            --moema-leaf: #ffc400;
+            --moema-sun: #ffc400;
+            --moema-cream: #0d0d0d;
+        }
+        .moema-header { border-bottom: 1px solid rgba(255,255,255,.1); }
+        .moema-header__inner { min-height: 66px; }
+        .moema-header__logo img { filter: drop-shadow(0 8px 22px rgba(0,0,0,.55)); }
+        .moema-header__nav a { position: relative; letter-spacing: .03em; }
+        .moema-header__nav a::after { content: ""; position: absolute; height: 2px; left: 0; right: 100%; bottom: -.55rem; background: #ffc400; transition: right .25s ease; }
+        .moema-header__nav a:hover::after { right: 0; }
+        .moema-header__cta { border-radius: .35rem; color: #080808; box-shadow: 6px 6px 0 #fff; }
+
+        .moema-hero {
+            min-height: 800px;
+            background-color: #070707;
+            background-image: linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px), radial-gradient(circle at 76% 45%, rgba(255,196,0,.13), transparent 30%);
+            background-size: 64px 64px, 64px 64px, auto;
+        }
+        .moema-hero::before { content: ""; position: absolute; top: 0; right: 0; width: 12%; height: 100%; background: #ffc400; clip-path: polygon(72% 0,100% 0,100% 100%,0 100%); }
+        .moema-hero::after { border-color: rgba(255,196,0,.18); box-shadow: 0 0 0 70px rgba(255,196,0,.035), 0 0 0 140px rgba(255,196,0,.018); }
+        .moema-hero__grid { min-height: 800px; grid-template-columns: .88fr 1.12fr; }
+        .moema-kicker { color: #ffc400; }
+        .moema-hero h1 { max-width: 600px; font-size: clamp(4.7rem, 7.7vw, 8rem); line-height: .82; text-transform: uppercase; letter-spacing: -.045em; }
+        .moema-hero h1 em { color: #ffc400; font-family: 'Bebas Neue', sans-serif; font-style: normal; letter-spacing: -.015em; }
+        .moema-hero__copy > p { color: rgba(255,255,255,.68); max-width: 535px; }
+        .moema-btn { border-radius: .35rem; text-transform: uppercase; font-size: .8rem; letter-spacing: .06em; }
+        .moema-btn--primary { color: #080808; box-shadow: 7px 7px 0 #fff; }
+        .moema-btn--ghost { background: #111; border-color: rgba(255,255,255,.2); }
+        .moema-hero__visual { min-height: 540px; }
+        .moema-hero__photo { inset: 1rem 0 0 3%; border: 1px solid rgba(255,255,255,.18); border-bottom: 12px solid #ffc400; border-radius: .35rem; box-shadow: 28px 28px 0 rgba(255,196,0,.14); transform: none; }
+        .moema-hero__photo::after { content: "CLEANFOODS / MOEMA"; position: absolute; left: 0; bottom: 0; padding: .7rem 1rem; background: #080808; color: #ffc400; font-size: .68rem; font-weight: 900; letter-spacing: .17em; }
+        .moema-hero__badge { left: -1.7rem; bottom: 1.6rem; border-radius: .35rem; border: 5px solid #080808; color: #080808; transform: rotate(-5deg); box-shadow: 9px 9px 0 #fff; }
+
+        .moema-proof { background: #ffc400; color: #080808; border-bottom: 1px solid #080808; }
+        .moema-proof__item { border-color: rgba(8,8,8,.25); }
+        .moema-proof__item strong { text-transform: uppercase; letter-spacing: .02em; }
+        .moema-proof__item span { color: rgba(8,8,8,.65); }
+
+        #menu { background: #080808; }
+        #menu::before { content: "01"; position: absolute; top: 4.5rem; right: 4vw; color: rgba(255,196,0,.08); font-family: 'Bebas Neue', sans-serif; font-size: 15rem; line-height: 1; pointer-events: none; }
+        #menu h2 { text-transform: uppercase; line-height: .9; }
+
+        .custom-meals { background: #ffc400; color: #080808; padding: 8rem 0; }
+        .custom-meals::before { content: "PERSONALIZADAS"; position: absolute; left: -1rem; bottom: -2rem; color: rgba(8,8,8,.08); font-family: 'Bebas Neue', sans-serif; font-size: clamp(7rem,16vw,16rem); line-height: .8; white-space: nowrap; }
+        .custom-meals__eyebrow { color: #080808; }
+        .custom-meals h2 { text-transform: uppercase; }
+        .custom-meals h2 em { color: #080808; font-family: 'Bebas Neue', sans-serif; font-style: normal; }
+        .custom-meals__intro p { color: rgba(8,8,8,.7); }
+        .custom-meals__step span { border-radius: .2rem; background: #080808; color: #ffc400; }
+        .diet-builder { position: relative; background: #0c0c0c; color: #fff; border: 1px solid rgba(255,255,255,.13); border-radius: .5rem; box-shadow: 18px 18px 0 #fff; }
+        .diet-builder__head h3 { text-transform: uppercase; }
+        .diet-builder__head span { border-radius: .2rem; background: #ffc400; color: #080808; }
+        .diet-options label { border-color: #343434; border-radius: .25rem; color: #bdbdbd; background: #171717; }
+        .diet-options input:checked + label { background: #ffc400; border-color: #ffc400; color: #080808; box-shadow: none; }
+        .diet-textarea { border-color: #343434; border-radius: .25rem; background: #171717; color: #fff; }
+        .diet-textarea:focus { border-color: #ffc400; box-shadow: 0 0 0 3px rgba(255,196,0,.14); }
+        .diet-submit { border-radius: .25rem; color: #080808; text-transform: uppercase; letter-spacing: .05em; }
+        .diet-note { color: #888; }
+
+        @media (max-width: 900px) {
+            .moema-hero::before { width: 5%; }
+            .moema-hero { min-height: auto; }
+            .moema-hero__grid { min-height: 0; grid-template-columns: 1fr; padding-bottom: 5rem; }
+            .moema-hero h1 { font-size: clamp(4.3rem, 13vw, 6.6rem); }
+            .moema-hero__visual { min-height: 470px; margin-top: 1rem; }
+            .moema-hero__photo { inset: 0; }
+            .diet-builder { box-shadow: 10px 10px 0 #fff; }
+        }
+        @media (max-width: 560px) {
+            .moema-header__cta { box-shadow: 4px 4px 0 #fff; }
+            .moema-hero h1 { font-size: clamp(3.75rem, 17vw, 5rem); }
+            .moema-hero__actions { align-items: stretch; }
+            .moema-btn { width: 100%; }
+            .moema-hero__visual { min-height: 350px; margin-top: .75rem; }
+            .moema-hero__photo { border-radius: .3rem; box-shadow: 12px 12px 0 rgba(255,196,0,.2); }
+            .moema-hero__badge { box-shadow: 5px 5px 0 #fff; }
+            .moema-proof__item { min-height: 92px; }
+            .custom-meals { padding: 6rem 0; }
+            .diet-builder { box-shadow: 7px 7px 0 #fff; }
+        }
+
+        /* Hero minimalista */
+        .moema-header { border-bottom: 0; padding-top: 1.5rem; }
+        .moema-header__cta { border-radius: 999px; box-shadow: none; padding-inline: 1.35rem; }
+        .moema-header__nav a::after { bottom: -.35rem; }
+        .moema-hero {
+            min-height: 760px;
+            background: #080808;
+        }
+        .moema-hero::before,
+        .moema-hero::after { display: none; }
+        .moema-hero__grid {
+            min-height: 760px;
+            grid-template-columns: minmax(0, .9fr) minmax(420px, 1.1fr);
+            gap: clamp(3rem, 7vw, 7.5rem);
+            padding-top: 8.5rem;
+            padding-bottom: 4rem;
+        }
+        .moema-kicker { gap: .65rem; font-size: .72rem; letter-spacing: .2em; }
+        .moema-kicker::before { width: 1.5rem; }
+        .moema-hero h1 {
+            max-width: 620px;
+            margin: 1.5rem 0 1.5rem;
+            font-family: 'Clash Display', sans-serif;
+            font-size: clamp(4rem, 6vw, 6.5rem);
+            font-weight: 500;
+            line-height: .93;
+            letter-spacing: -.055em;
+            text-transform: none;
+        }
+        .moema-hero h1 em {
+            display: block;
+            margin-top: .15em;
+            font-family: 'Instrument Serif', serif;
+            font-size: 1.08em;
+            font-style: italic;
+            font-weight: 400;
+            line-height: .8;
+            letter-spacing: -.035em;
+            text-transform: none;
+        }
+        .moema-hero__copy > p { max-width: 500px; color: rgba(255,255,255,.62); font-size: 1.05rem; line-height: 1.75; }
+        .moema-hero__actions { margin-top: 2rem; gap: 1.1rem; }
+        .moema-btn { min-height: 52px; border-radius: 999px; padding-inline: 1.45rem; text-transform: none; font-size: .88rem; letter-spacing: 0; }
+        .moema-btn--primary { box-shadow: none; }
+        .moema-btn--ghost { padding-inline: .35rem; border: 0; border-radius: 0; background: transparent; color: rgba(255,255,255,.8); border-bottom: 1px solid rgba(255,255,255,.35); }
+        .moema-hero__visual { min-height: 510px; }
+        .moema-hero__photo {
+            inset: 0;
+            border: 0;
+            border-radius: 1.5rem;
+            box-shadow: none;
+            overflow: hidden;
+        }
+        .moema-hero__photo::after { display: none; }
+        .moema-hero__photo img { object-position: 55% center; }
+        .moema-hero__badge { display: none; }
+
+        @media (max-width: 900px) {
+            .moema-hero__grid { grid-template-columns: 1fr; gap: 3rem; padding-top: 8rem; padding-bottom: 4rem; }
+            .moema-hero h1 { max-width: 680px; }
+            .moema-hero__visual { min-height: 430px; margin-top: 0; }
+        }
+        @media (max-width: 560px) {
+            .moema-header { padding-top: 1rem; }
+            .moema-header__cta { box-shadow: none; }
+            .moema-hero__grid { padding-top: 7.5rem; gap: 2.5rem; }
+            .moema-hero h1 { font-size: clamp(3.35rem, 15vw, 4.6rem); }
+            .moema-hero__copy > p { font-size: 1rem; }
+            .moema-hero__actions { gap: .85rem; }
+            .moema-btn { width: auto; }
+            .moema-btn--primary { flex: 1 1 100%; }
+            .moema-btn--ghost { margin-inline: auto; }
+            .moema-hero__visual { min-height: 310px; }
+            .moema-hero__photo { border-radius: 1rem; box-shadow: none; }
+        }
     </style>
 </head>
 
@@ -848,56 +1137,90 @@
             class="absolute -top-1 -right-1 sm:top-0 sm:right-0 bg-cf-yellow text-cf-black text-[11px] sm:text-[12px] w-5 h-5 sm:w-6 sm:h-6 rounded-full flex items-center justify-center font-bold shadow-lg hidden">0</span>
     </button>
 
-    <!-- Header Minimal/Raw -->
-    <header class="reference-header">
-        <div class="reference-header__inner">
-            <a href="#hero" class="reference-header__logo" aria-label="CleanFoods Lençóis — início">
-                <img src="logo-lencois.png" alt="CleanFoods Lençóis">
+    <header class="moema-header">
+        <div class="moema-header__inner">
+            <a href="#hero" class="moema-header__logo" aria-label="CleanFoods Moema — início">
+                <img src="logo-moema.png" alt="CleanFoods Moema">
             </a>
-            <nav class="reference-header__nav" aria-label="Navegação principal">
+            <nav class="moema-header__nav" aria-label="Navegação principal">
                 <a href="#menu">Cardápio</a>
+                <a href="#personalizadas">Personalizadas</a>
                 <a href="#como-funciona">Como funciona</a>
                 <a href="#contato">Contato</a>
-                <a href="admin.html">Admin</a>
             </nav>
-            <a href="#menu" class="reference-header__menu" aria-label="Ir para o cardápio"><i class="fa-solid fa-bars-staggered"></i></a>
+            <a href="#menu" class="moema-header__cta">Fazer pedido</a>
         </div>
     </header>
 
-    <section class="hero-reference" id="hero">
-        <div class="hero-reference__shell">
-            <div class="hero-reference__social" aria-label="Redes e contato">
-                <a href="https://wa.me/5511996268057" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
-                <a href="#contato" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                <a href="#contato" aria-label="Localização"><i class="fa-solid fa-location-dot"></i></a>
+    <section class="moema-hero" id="hero">
+        <div class="moema-hero__grid">
+            <div class="moema-hero__copy">
+                <div class="moema-kicker">CleanFoods Moema</div>
+                <h1>Comida de verdade.<em>No seu ritmo.</em></h1>
+                <p>Marmitas equilibradas e cheias de sabor para deixar a sua rotina mais leve — prontas ou feitas nas medidas da sua dieta.</p>
+                <div class="moema-hero__actions">
+                    <a href="#menu" class="moema-btn moema-btn--primary"><i class="fa-solid fa-basket-shopping"></i> Ver cardápio</a>
+                    <a href="#personalizadas" class="moema-btn moema-btn--ghost">Personalizar marmitas</a>
+                </div>
             </div>
-            <div class="hero-reference__copy">
-                <div class="hero-reference__eyebrow">CleanFoods Lençóis</div>
-                <h1 class="hero-reference__title">
-                    <span>A melhor</span>
-                    <span class="yellow">escolha.</span>
-                    <span>Todo dia.</span>
-                </h1>
-                <div class="hero-reference__subline">Saudável. Prática. Gostosa.</div>
-                <p class="hero-reference__description">Marmitas equilibradas e cheias de sabor para facilitar a sua rotina sem abrir mão de uma comida que dá vontade de repetir.</p>
-                <a href="#menu" class="hero-reference__cta">Ver cardápio <i class="fa-solid fa-basket-shopping"></i></a>
+            <div class="moema-hero__visual">
+                <div class="moema-hero__photo"><img src="hero-image.png" alt="Marmita personalizada da CleanFoods Moema com carne, purê e legumes"></div>
+                <div class="moema-hero__badge"><div><strong>do seu jeito</strong>pesos e alimentos personalizados</div></div>
             </div>
-            <div class="hero-reference__visual">
-                <div class="hero-reference__ring"></div>
-                <div class="hero-reference__plate"><img src="hero-marmita-lencois.png" alt="Marmita CleanFoods Lençóis com carne desfiada, purê e legumes"></div>
-                <div class="hero-reference__accent"><div><strong>100%</strong>comida de verdade</div></div>
-                <div class="hero-reference__label">Sem glúten · Sem lactose · Baixo sódio</div>
-            </div>
-            <div class="hero-reference__dots" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
         </div>
     </section>
 
-    <section class="metric-strip relative z-10">
-        <div class="max-w-7xl mx-auto grid grid-cols-2 lg:grid-cols-4 px-5 lg:px-8 py-7">
-            <div class="metric-card px-4 py-3"><strong class="block text-xl text-white">Sem glúten</strong><span class="text-sm text-gray-500">mais leve para você</span></div>
-            <div class="metric-card px-4 py-3"><strong class="block text-xl text-white">Sem lactose</strong><span class="text-sm text-gray-500">receitas equilibradas</span></div>
-            <div class="metric-card px-4 py-3"><strong class="block text-xl text-white">Baixo sódio</strong><span class="text-sm text-gray-500">tempero na medida</span></div>
-            <div class="metric-card px-4 py-3"><strong class="block text-xl text-white">Todo dia</strong><span class="text-sm text-gray-500">das 11h às 19h</span></div>
+    <section class="moema-proof" aria-label="Diferenciais CleanFoods Moema">
+        <div class="moema-proof__inner">
+            <div class="moema-proof__item"><strong>Sem glúten</strong><span>receitas leves para a rotina</span></div>
+            <div class="moema-proof__item"><strong>Sem lactose</strong><span>mais opções para você</span></div>
+            <div class="moema-proof__item"><strong>Baixo sódio</strong><span>sabor e equilíbrio na medida</span></div>
+            <div class="moema-proof__item"><strong>Feito em Moema</strong><span>praticidade perto de casa</span></div>
+        </div>
+    </section>
+
+    <section class="custom-meals" id="personalizadas">
+        <div class="custom-meals__shell">
+            <div class="custom-meals__intro">
+                <span class="custom-meals__eyebrow">Marmitas personalizadas</span>
+                <h2>Sua dieta, <em>do seu jeito.</em></h2>
+                <p>Você envia as orientações da sua dieta e a nossa equipe monta uma proposta com porções, ingredientes e quantidade de refeições alinhadas à sua rotina.</p>
+                <div class="custom-meals__steps">
+                    <div class="custom-meals__step"><span>1</span> Conte seu objetivo</div>
+                    <div class="custom-meals__step"><span>2</span> Envie suas medidas e preferências</div>
+                    <div class="custom-meals__step"><span>3</span> Receba uma proposta personalizada</div>
+                </div>
+            </div>
+            <form class="diet-builder" id="diet-builder" onsubmit="sendDietRequest(event)">
+                <div class="diet-builder__head">
+                    <h3>Monte seu briefing</h3>
+                    <span>leva menos de 1 minuto</span>
+                </div>
+                <fieldset class="diet-field">
+                    <legend class="diet-label">Qual é o seu objetivo?</legend>
+                    <div class="diet-options">
+                        <input type="radio" name="diet-goal" id="goal-emagrecer" value="Emagrecimento" checked><label for="goal-emagrecer">Emagrecimento</label>
+                        <input type="radio" name="diet-goal" id="goal-massa" value="Ganho de massa"><label for="goal-massa">Ganho de massa</label>
+                        <input type="radio" name="diet-goal" id="goal-equilibrio" value="Alimentação equilibrada"><label for="goal-equilibrio">Equilíbrio</label>
+                        <input type="radio" name="diet-goal" id="goal-clinica" value="Dieta clínica"><label for="goal-clinica">Dieta clínica</label>
+                    </div>
+                </fieldset>
+                <fieldset class="diet-field">
+                    <legend class="diet-label">Quantas refeições por semana?</legend>
+                    <div class="diet-options">
+                        <input type="radio" name="diet-quantity" id="qty-5" value="5 refeições" checked><label for="qty-5">5</label>
+                        <input type="radio" name="diet-quantity" id="qty-10" value="10 refeições"><label for="qty-10">10</label>
+                        <input type="radio" name="diet-quantity" id="qty-15" value="15 refeições"><label for="qty-15">15</label>
+                        <input type="radio" name="diet-quantity" id="qty-20" value="20 ou mais refeições"><label for="qty-20">20+</label>
+                    </div>
+                </fieldset>
+                <div class="diet-field">
+                    <label class="diet-label" for="diet-details">Pesos, restrições ou orientações do nutricionista</label>
+                    <textarea class="diet-textarea" id="diet-details" placeholder="Ex.: 150 g de frango, 100 g de arroz, sem cebola..."></textarea>
+                </div>
+                <button class="diet-submit" type="submit"><i class="fa-brands fa-whatsapp"></i> Conversar com a equipe</button>
+                <p class="diet-note">O envio abre uma conversa no WhatsApp. A proposta é confirmada pela equipe.</p>
+            </form>
         </div>
     </section>
 
@@ -998,7 +1321,7 @@
         <div class="container mx-auto px-4 relative z-10">
             <!-- Central CTA & Branding -->
             <div class="flex flex-col items-center text-center max-w-2xl mx-auto mb-16 reveal-up">
-                <img src="logo-lencois.png" alt="CleanFoods Lençóis" class="w-64 mb-8">
+                <img src="logo-moema.png" alt="CleanFoods Moema" class="w-64 mb-8">
                 <h2 class="font-heading font-semibold tracking-tight text-4xl sm:text-5xl text-white mb-4">
                     Comida boa muda o <span class="text-cf-yellow">dia</span>.
                 </h2>
@@ -1023,14 +1346,14 @@
                     <span class="text-cf-yellow mb-2"><i class="fa-brands fa-instagram text-2xl group-hover:scale-110 transition-transform"></i></span>
                     <h4 class="font-heading font-bold text-white uppercase tracking-widest mb-1 text-sm">Instagram</h4>
                     <span class="font-body text-gray-400">
-                        CleanFoods Lençóis
+                        CleanFoods Moema
                     </span>
                 </div>
                 <div class="flex flex-col items-center sm:items-end group">
                     <span class="text-cf-yellow mb-2"><i class="fa-solid fa-location-dot text-2xl group-hover:scale-110 transition-transform"></i></span>
                     <h4 class="font-heading font-bold text-white uppercase tracking-widest mb-1 text-sm">Localização</h4>
                     <span class="font-body text-gray-400">
-                        São Paulo - SP
+                        Moema · São Paulo - SP
                     </span>
                 </div>
             </div>
@@ -1038,7 +1361,7 @@
             <!-- Copyright -->
             <div class="flex flex-col md:flex-row justify-between items-center border-t border-white/5 pt-8 text-center md:text-left text-xs font-body text-gray-600 font-medium tracking-widest uppercase gap-4">
                 <div>
-                    © 2026 CLEANFOODS LENÇÓIS. TODOS OS DIREITOS RESERVADOS.
+                    © 2026 CLEANFOODS MOEMA. TODOS OS DIREITOS RESERVADOS.
                 </div>
                 <div>
                     <a href="https://www.grpsantana.com.br/" target="_blank" class="text-gray-500 hover:text-white transition-colors cursor-hover flex items-center gap-2">

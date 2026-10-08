@@ -1,5 +1,5 @@
 
-    {
+const schemaData = {
       "@context": "https://schema.org",
       "@graph": [
         {
